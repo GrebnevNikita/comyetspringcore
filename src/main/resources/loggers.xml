@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+
+
+    <bean id="FileEventLogger" class="FileEventLogger" init-method="init">
+        <constructor-arg value="C:/0DISK/555455.txt"/>
+        <constructor-arg ref="Event"></constructor-arg>
+    </bean>
+
+    <bean id="CacheFileEventLogger"
+          class="CacheFileEventLogger"
+          destroy-method="destroy"
+         parent="FileEventLogger"
+    >
+        <!--<constructor-arg value="10" type="int"/>-->
+    </bean>
+    <bean id="ConsoleEventLogger" class="ConsoleEventLogger">
+        <constructor-arg ref="Event">
+        </constructor-arg>
+
+    </bean>
+
+
+</beans>
